@@ -9,12 +9,12 @@
   "shortcuts": [],
   "icons": [
     {
-      "src": "/logo192x192.png",
+      "src": "/Ryori-Bon/logo192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/logo512x512.png",
+      "src": "/Ryori-Bon/logo512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
