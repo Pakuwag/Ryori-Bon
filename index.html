@@ -10,15 +10,7 @@
     <link rel="manifest" href="manifest.json" />
     <link rel="apple-touch-icon" href="/Ryori-Bon/logo192x192.png?v=20220305">
   </head>
-  …
-Add the example app to an iOS home screen (again) #
-Try adding the example app to an iOS home screen again. This time, a proper icon is generated for the site. If you audit the page again with Lighthouse you'll also see that the Does not provide a valid apple-touch-icon audit now passes.
-The Apple touch icon.
-The Apple touch icon.
-Last updated: Aug 26, 2019 — Improve article
-RETURN TO ARTICLE
-
-    <style id="compiled-css" type="text/css">
+    <style type="text/css">
       @import url(//fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister);
       * {
         box-sizing: border-box;
@@ -106,7 +98,6 @@ RETURN TO ARTICLE
       /* EOS */
     </style>
 
-    <script id="insert"></script>
   </head>
   <body data-new-gr-c-s-check-loaded="14.1052.0" data-gr-ext-installed="">
     <div class="app">
@@ -187,6 +178,18 @@ RETURN TO ARTICLE
 
     <script type="text/javascript">
       //<![CDATA[
+
+      // if ('serviceWorker' in navigator) {
+      //   window.addEventListener('load', function() {
+      //     navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      //       // Registration was successful
+      //       console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      //     }, function(err) {
+      //       // registration failed :(
+      //       console.log('ServiceWorker registration failed: ', err);
+      //     });
+      //   });
+      // }
 
       function openTab(tab) {
         console.log("clicked " + tab);
