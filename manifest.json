@@ -1,8 +1,8 @@
 {
   "short_name": "Ryori-Bon",
   "name": "Ryori-Bon: Recipes for our family",
-  "background_color": "#3367D6",
-  "theme_color": "#3367D6",
+  "background_color": "#D2B48C",
+  "theme_color": "#D2B48C",
   "scope": "/Ryori-Bon",
   "start_url": "/Ryori-Bon/?source=pwa",
   "display": "standalone",
