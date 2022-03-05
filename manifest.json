@@ -1,0 +1,22 @@
+{
+  "short_name": "Ryori-Bon",
+  "name": "Ryori-Bon: Recipes for our family",
+  "background_color": "#3367D6",
+  "theme_color": "#3367D6",
+  "scope": "/Ryori-Bon",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "shortcuts": [],
+  "icons": [
+    {
+      "src": "/logo192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/logo512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+}
