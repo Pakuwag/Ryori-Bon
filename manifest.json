@@ -4,7 +4,7 @@
   "background_color": "#3367D6",
   "theme_color": "#3367D6",
   "scope": "/Ryori-Bon",
-  "start_url": "/?source=pwa",
+  "start_url": "/Ryori-Bon/?source=pwa",
   "display": "standalone",
   "shortcuts": [],
   "icons": [
