@@ -3,7 +3,7 @@
   "name": "Ryori-Bon: Recipes for our family",
   "background_color": "#D2B48C",
   "theme_color": "#D2B48C",
-  "start_url": "?source=pwa",
+  "start_url": "./?source=pwa",
   "display": "standalone",
   "shortcuts": [],
   "icons": [
