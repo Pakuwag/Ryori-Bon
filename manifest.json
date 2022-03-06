@@ -3,18 +3,17 @@
   "name": "Ryori-Bon: Recipes for our family",
   "background_color": "#D2B48C",
   "theme_color": "#D2B48C",
-  "scope": "/Ryori-Bon",
-  "start_url": "/Ryori-Bon/?source=pwa",
+  "start_url": "?source=pwa",
   "display": "standalone",
   "shortcuts": [],
   "icons": [
     {
-      "src": "/Ryori-Bon/logo192x192.png",
+      "src": "logo192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/Ryori-Bon/logo512x512.png",
+      "src": "logo512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

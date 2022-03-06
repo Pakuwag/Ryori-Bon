@@ -1,22 +1,29 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="logo192x192.png?v=20220305">
+    <link rel="apple-touch-icon" href="logo192x192.png?v=20220305">
     <title>Ryori-Bon</title>
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="googlebot" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#D2B48C" />
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="format-detection" content="telephone=no">
-    <link rel="manifest" href="manifest.json" />
-    <link rel="apple-touch-icon" href="/Ryori-Bon/logo192x192.png?v=20220305">
+    <meta name="description" content="Recipes for our family" />
     
   </head>
     <style type="text/css">
-      @import url(//fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister);
+      @import url(//fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap);
       * {
         box-sizing: border-box;
         font-family: "Love Ya Like A Sister";
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
       }
       pre {
         font-family: monospace;
@@ -45,6 +52,7 @@
         display: flex;
         flex-direction: row-reverse;
         align-items: stretch;
+        margin: 0;
       }
       .pages {
         position: relative;
@@ -107,12 +115,13 @@
         <div class="tab" onclick="openTab('cover')">x</div>
         <div class="tab" onclick="openTab('a')">My Recipes</div>
         <div class="tab" onclick="openTab('b')">Try Recipes</div>
+        <div class="tab" onclick="openTab('c')">Settings</div>
       </div>
       <div class="pages">
         <div class="page" id="a">
           <h1>My Recipes</h1>
         </div>
-        <div class="page active" id="b">
+        <div class="page" id="b">
           <h1>Try Recipes</h1>
           <ul>
             <li>
@@ -165,7 +174,10 @@
             </li>
           </ul>
         </div>
-        <div class="page" id="cover">
+        <div class="page" id="a">
+          <h1>My Recipes</h1>
+        </div>
+        <div class="page active" id="cover">
           <div class="app-title">Ryōri-Bon</div>
           <div class="app-logo">
             <pre>
