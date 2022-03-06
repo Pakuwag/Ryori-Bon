@@ -109,19 +109,19 @@
     </style>
 
   </head>
-  <body data-new-gr-c-s-check-loaded="14.1052.0" data-gr-ext-installed="">
+  <body>
     <div class="app">
-      <div class="side-tabs">
-        <div class="tab" onclick="openTab('cover')">x</div>
-        <div class="tab" onclick="openTab('a')">My Recipes</div>
-        <div class="tab" onclick="openTab('b')">Try Recipes</div>
-        <div class="tab" onclick="openTab('c')">Settings</div>
-      </div>
-      <div class="pages">
-        <div class="page" id="a">
+      <nav class="side-tabs">
+        <div class="tab" role='link' onclick="openTab('cover')">x</div>
+        <div class="tab" role='link' onclick="openTab('a')">My Recipes</div>
+        <div class="tab" role='link' onclick="openTab('b')">Try Recipes</div>
+        <div class="tab" role='link' onclick="openTab('c')">Settings</div>
+      </nav>
+      <main class="pages">
+        <section class="page" id="a">
           <h1>My Recipes</h1>
-        </div>
-        <div class="page" id="b">
+        </section>
+        <section class="page" id="b">
           <h1>Try Recipes</h1>
           <ul>
             <li>
@@ -173,11 +173,11 @@
               </a>
             </li>
           </ul>
-        </div>
-        <div class="page" id="a">
+        </section>
+        <section class="page" id="a">
           <h1>My Recipes</h1>
-        </div>
-        <div class="page active" id="cover">
+        </section>
+        <section class="page active" id="cover">
           <div class="app-title">Ryōri-Bon</div>
           <div class="app-logo">
             <pre>
@@ -186,8 +186,8 @@
 \_(_(")(")  </pre
             >
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
 
     <script type="text/javascript">
