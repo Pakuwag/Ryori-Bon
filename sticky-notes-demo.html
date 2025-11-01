@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Notes Demo - Ryori-Bon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aleo:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: "Aleo", serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .demo-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .demo-btn.primary {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .demo-btn.secondary {
+            background: #2196f3;
+            color: white;
+        }
+        
+        .demo-btn.danger {
+            background: #f44336;
+            color: white;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .demo-instructions {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-instructions h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .demo-instructions ul {
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .demo-note-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .demo-note-example {
+            background: #fce4ec;
+            border: 1px solid #e91e63;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transform: rotate(-1deg);
+        }
+        
+        .demo-note-example:nth-child(even) {
+            transform: rotate(1deg);
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        
+        .demo-note-example:nth-child(3) {
+            background: #f3e5f5;
+            border-color: #9c27b0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1 class="demo-title">🗒️ Sticky Notes Demo</h1>
+            <p class="demo-subtitle">Interactive sticky notes system for Ryori-Bon</p>
+        </div>
+        
+        <div class="demo-controls">
+            <button class="demo-btn primary" onclick="addSampleNote()">Add Sample Note</button>
+            <button class="demo-btn primary" onclick="addRecipeNote()">Add Recipe Note</button>
+            <button class="demo-btn primary" onclick="addLargeNote()">Add Large Note</button>
+            <button class="demo-btn secondary" onclick="showNoteCount()">Count Notes</button>
+            <button class="demo-btn secondary" onclick="testReload()">Test Reload</button>
+            <button class="demo-btn secondary" onclick="exportNotes()">Export Notes</button>
+            <button class="demo-btn danger" onclick="clearAllNotes()">Clear All</button>
+        </div>
+        
+        <div class="demo-instructions">
+            <h3>📝 How to Use Sticky Notes</h3>
+            <ul>
+                <li><strong>Create:</strong> Click the green + button (bottom-right) or use the demo buttons above</li>
+                <li><strong>Move:</strong> Click and drag the note header to reposition</li>
+                <li><strong>Resize:</strong> Drag the resize handle in the bottom-right corner of each note</li>
+                <li><strong>Edit:</strong> Click inside the note area to type your content</li>
+                <li><strong>Color:</strong> Use the dropdown in the header to change colors</li>
+                <li><strong>Delete:</strong> Click the × button in the header</li>
+                <li><strong>Persistence:</strong> Notes are automatically saved to your browser's local storage</li>
+            </ul>
+        </div>
+        
+        <div class="demo-note-examples">
+            <div class="demo-note-example">
+                <strong>Recipe Reminder</strong><br>
+                "Don't forget to marinate the chicken for at least 2 hours! 🍗"
+            </div>
+            <div class="demo-note-example">
+                <strong>Shopping List</strong><br>
+                "Need to buy: soy sauce, mirin, sake, and green onions 🛒"
+            </div>
+            <div class="demo-note-example">
+                <strong>Cooking Tip</strong><br>
+                "Use medium heat for perfect teriyaki glaze - don't rush it! 🔥"
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Part of the Ryōri-Bon family recipe collection app</p>
+        </div>
+    </div>
+
+    <!-- Include the sticky notes module -->
+    <script src="sticky-notes.js"></script>
+    
+    <script>
+        // Initialize sticky notes
+        let stickyNotes;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            stickyNotes = new StickyNotesManager({
+                storageKey: 'demo-sticky-notes',
+                container: 'body'
+            });
+            
+            console.log('Sticky Notes Demo initialized');
+        });
+        
+        // Demo functions
+        function addSampleNote() {
+            const messages = [
+                "Welcome to sticky notes! 📝",
+                "Try dragging me around! 🖱️",
+                "Change my color! 🎨",
+                "I'll stay here even after refresh! 💾"
+            ];
+            
+            const colors = ['pink', 'lavender', 'blue'];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            const x = Math.random() * (window.innerWidth - 250) + 50;
+            const y = Math.random() * (window.innerHeight - 200) + 100;
+            
+            stickyNotes.addNote(randomMessage, x, y, randomColor);
+        }
+        
+        function addRecipeNote() {
+            const recipeNotes = [
+                "🍜 Try the chicken teriyaki recipe next!",
+                "🥢 Remember: soy sauce, mirin, and sake in equal parts",
+                "🔥 Medium heat works best for the glaze",
+                "⏰ Marinate for at least 2 hours for best flavor",
+                "🌿 Fresh green onions make all the difference!",
+                "📖 Rate this recipe: ⭐⭐⭐⭐⭐"
+            ];
+            
+            const randomNote = recipeNotes[Math.floor(Math.random() * recipeNotes.length)];
+            const x = Math.random() * (window.innerWidth - 250) + 50;
+            const y = Math.random() * (window.innerHeight - 200) + 100;
+            
+            stickyNotes.addNote(randomNote, x, y, 'pink');
+        }
+        
+        function addLargeNote() {
+            const largeNote = `📝 Large Note for Detailed Recipes!
+
+This is a larger sticky note perfect for:
+• Detailed cooking instructions
+• Ingredient lists with measurements
+• Step-by-step cooking procedures
+• Personal cooking tips and variations
+
+Try resizing me by dragging the handle in the bottom-right corner! 📏`;
+            
+            const x = Math.random() * (window.innerWidth - 350) + 50;
+            const y = Math.random() * (window.innerHeight - 300) + 100;
+            
+            stickyNotes.addNote(largeNote, x, y, 'lavender', 300, 250);
+        }
+        
+        function showNoteCount() {
+            const count = stickyNotes.getAllNotes().length;
+            alert(`You currently have ${count} sticky note${count !== 1 ? 's' : ''}.`);
+        }
+        
+        function exportNotes() {
+            const data = stickyNotes.exportNotes();
+            
+            // Create and download JSON file
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'sticky-notes-export.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            alert('Notes exported! Check your downloads folder.');
+        }
+        
+        function clearAllNotes() {
+            if (confirm('Are you sure you want to delete all sticky notes? This cannot be undone.')) {
+                stickyNotes.clearAllNotes();
+                alert('All notes cleared!');
+            }
+        }
+        
+        function testReload() {
+            alert('The page will reload in 2 seconds. Watch if notes keep their sizes!');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        }
+        
+        function debugNotes() {
+            const notes = stickyNotes.getAllNotes();
+            console.log('Current notes data:', notes);
+            alert(`Found ${notes.length} notes. Check console for details.`);
+        }
+        
+        function importNotes() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            stickyNotes.importNotes(data);
+                            alert('Notes imported successfully!');
+                        } catch (error) {
+                            alert('Error importing notes: ' + error.message);
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+    </script>
+</body>
+</html>

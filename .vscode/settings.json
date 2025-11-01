@@ -1,0 +1,7 @@
+{
+  "liveServer.settings.https": {
+    "enable": true,
+    "cert": "/etc/ssl/certs/localhost.crt",
+    "key": "/etc/ssl/localhost.key"
+  }
+}

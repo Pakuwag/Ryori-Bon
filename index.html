@@ -15,10 +15,10 @@
     
   </head>
     <style type="text/css">
-      @import url(//fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap);
+      @import url('https://fonts.googleapis.com/css2?family=Aleo:wght@300;400;700&display=swap');
       * {
         box-sizing: border-box;
-        font-family: "Love Ya Like A Sister";
+        font-family: "Aleo", serif;
       }
       body {
         padding: 0;
@@ -174,6 +174,41 @@
             </li>
           </ul>
         </section>
+        <section class="page" id="c">
+          <h1>Settings</h1>
+          
+          <h2>📝 Sticky Notes</h2>
+          <div style="margin: 1rem 0;">
+            <p>Use sticky notes to add personal reminders and comments throughout the app!</p>
+            
+            <div style="margin: 0.5rem 0;">
+              <button onclick="addDemoNote()" style="padding: 0.5rem 1rem; margin: 0.25rem; background: #4caf50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Add Demo Note
+              </button>
+              
+              <button onclick="exportNotes()" style="padding: 0.5rem 1rem; margin: 0.25rem; background: #2196f3; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Export Notes
+              </button>
+              
+              <button onclick="clearAllNotes()" style="padding: 0.5rem 1rem; margin: 0.25rem; background: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Clear All Notes
+              </button>
+            </div>
+            
+            <h3>How to use:</h3>
+            <ul style="line-height: 1.6;">
+              <li>Click the green <strong>+</strong> button in the bottom-right corner to create a new note</li>
+              <li>Drag notes around by clicking and holding the header area</li>
+              <li>Resize notes by dragging the handle in the bottom-right corner</li>
+              <li>Change note colors using the dropdown in the header</li>
+              <li>Delete notes by clicking the <strong>×</strong> button</li>
+              <li>Notes are automatically saved and will persist between sessions</li>
+            </ul>
+          </div>
+          
+          <h2>🍜 App Info</h2>
+          <p>Ryōri-Bon - Your family recipe collection</p>
+        </section>
         <section class="page" id="a">
           <h1>My Recipes</h1>
         </section>
@@ -190,6 +225,9 @@
       </main>
     </div>
 
+    <!-- Sticky Notes Module -->
+    <script src="sticky-notes.js"></script>
+    
     <script type="text/javascript">
       //<![CDATA[
 
@@ -212,6 +250,44 @@
         });
         document.getElementById(tab).classList.add("active");
       }
+
+      // Initialize sticky notes system
+      let stickyNotes;
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the sticky notes manager
+        stickyNotes = new StickyNotesManager({
+          storageKey: 'ryori-bon-notes',
+          container: 'body'
+        });
+        
+        console.log('Sticky Notes system initialized');
+        
+        // Optional: Add some demo functionality
+        window.addDemoNote = function() {
+          stickyNotes.addNote('Try this delicious recipe! 🍜', 100, 100, 'yellow');
+        };
+        
+        window.exportNotes = function() {
+          const data = stickyNotes.exportNotes();
+          console.log('Notes exported:', data);
+          
+          // Create download link
+          const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'ryori-bon-notes.json';
+          a.click();
+          URL.revokeObjectURL(url);
+        };
+        
+        window.clearAllNotes = function() {
+          if (confirm('Are you sure you want to delete all sticky notes?')) {
+            stickyNotes.clearAllNotes();
+          }
+        };
+      });
 
       //]]>
     </script>
